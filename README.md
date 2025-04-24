@@ -1,0 +1,3 @@
+## 23/04
+
+Hoje vimos a diferença de banco de dados nosql para sql, onde a principal diferença é: Bancos de dados SQL são ideais para aplicações que exigem transações complexas e garantem a integridade dos dados, enquanto bancos de dados NoSQL são mais adequados para lidar com grandes volumes de dados não estruturados, permitindo maior flexibilidade em sua utilização. Adionamos uma nova lib ao pip `pylint`.
