@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+
 from src.configs.credentials import credentials
 
 
@@ -13,5 +14,5 @@ class DBConnectionHandler:
         self.__client = MongoClient(self.__connection_string)
         self.__db_connection = self.__client[self.__database_name]
 
-    def get_db_connection(self):
+    def get_db_connection(self) -> MongoClient:
         return self.__db_connection
