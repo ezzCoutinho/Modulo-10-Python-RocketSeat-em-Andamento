@@ -1,4 +1,5 @@
 from typing import Dict, List
+from bson import ObjectId
 
 
 class OrdersRepository:
@@ -33,3 +34,8 @@ class OrdersRepository:
         collection = self.__db_connection.get_collection(self.__collection_name)
         data = collection.find({"address": {"$exists": True}}, {"_id": 0, "itens": 0})
         return list(data)
+
+    def select_by_object_id(self, object_id: str) -> Dict:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        data = collection.find_one({"_id": ObjectId(object_id)})
+        return data
