@@ -36,8 +36,28 @@ def test_select_many():
         print(item["itens"])
 
 
+@pytest.mark.skip(reason="SKIPPED")
 def test_select_one():
     orders_repository = OrdersRepository(conn)
     doc_filter = {"cupom": True}
     data = orders_repository.select_one(doc_filter)
     print(data)
+
+
+@pytest.mark.skip(reason="SKIPPED")
+def test_select_many_with_properties():
+    orders_repository = OrdersRepository(conn)
+    doc_filter = {"cupom": True}
+    data = orders_repository.select_many_with_properties(doc_filter)
+
+    for cupom in data:
+        print(cupom)
+
+
+@pytest.mark.skip(reason="SKIPPED")
+def test_select_if_property_exists():
+    orders_repository = OrdersRepository(conn)
+    data = orders_repository.select_if_property_exists()
+
+    for item in data:
+        print(item)
