@@ -23,3 +23,13 @@ class OrdersRepository:
         collection = self.__db_connection.get_collection(self.__collection_name)
         data = collection.find_one(doc_filter)
         return data
+
+    def select_many_with_properties(self, doc_filter: Dict) -> List:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        data = collection.find(doc_filter, {"_id": 0, "cupom": 0})
+        return list(data)
+
+    def select_if_property_exists(self) -> Dict:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        data = collection.find({"address": {"$exists": True}}, {"_id": 0, "itens": 0})
+        return list(data)
