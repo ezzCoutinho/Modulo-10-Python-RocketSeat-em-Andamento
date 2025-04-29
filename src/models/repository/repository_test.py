@@ -1,8 +1,8 @@
 import pytest
+from bson import ObjectId
 
 from src.models.connection.connection_handler import DBConnectionHandler
-from src.repository.orders_repository import OrdersRepository
-from bson import ObjectId
+from src.models.repository.orders_repository import OrdersRepository
 
 db_connection_handler = DBConnectionHandler()
 db_connection_handler.connect_to_db()
