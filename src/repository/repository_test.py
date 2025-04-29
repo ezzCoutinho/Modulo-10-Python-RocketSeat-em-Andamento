@@ -2,6 +2,7 @@ import pytest
 
 from src.models.connection.connection_handler import DBConnectionHandler
 from src.repository.orders_repository import OrdersRepository
+from bson import ObjectId
 
 db_connection_handler = DBConnectionHandler()
 db_connection_handler.connect_to_db()
@@ -91,8 +92,34 @@ def test_select_many_with_multiple_filters_with_or():
         print(item)
 
 
+@pytest.mark.skip(reason="SKIPPED")
 def test_select_by_object_id():
     orders_repository = OrdersRepository(conn)
     object_id = "680acfcc6a2842ab2f0fde9f"
     data = orders_repository.select_by_object_id(object_id)
     print(data)
+
+
+@pytest.mark.skip(reason="SKIPPED")
+def test_edit_registry():
+    orders_repository = OrdersRepository(conn)
+    object_id = "680ad3b36a2842ab2f0fdea1"
+    orders_repository.edit_registry(object_id, {"itens.pizza.tipo": "CALABRESA"})
+
+
+@pytest.mark.skip(reason="SKIPPED")
+def test_edit_many_registries():
+    orders_repository = OrdersRepository(conn)
+    doc_filter = {
+        "_id": ObjectId("680ad3b36a2842ab2f0fdea1"),
+        "itens.pizza.tipo": {"$exists": True},
+    }
+    new_data = {"itens.pizza.tipo": "Vegana"}
+    orders_repository.edit_many_registries(doc_filter, new_data)
+
+
+def test_edit_registry_with_increment():
+    orders_repository = OrdersRepository(conn)
+    doc_filter = {"itens.refrigerante.quantidade": {"$exists": True}}
+    new_data = {"itens.refrigerante.quantidade": 91}
+    orders_repository.edit_registry_with_increment(doc_filter, new_data)
