@@ -1,4 +1,5 @@
 from typing import Dict, List
+
 from bson import ObjectId
 
 
@@ -39,3 +40,18 @@ class OrdersRepository:
         collection = self.__db_connection.get_collection(self.__collection_name)
         data = collection.find_one({"_id": ObjectId(object_id)})
         return data
+
+    def edit_registry(self, object_id: str, new_data: Dict) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_one(
+            {"_id": ObjectId(object_id)},
+            {"$set": new_data},
+        )
+
+    def edit_many_registries(self, doc_filter: Dict, new_data: Dict) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_many(doc_filter, {"$set": new_data})
+
+    def edit_registry_with_increment(self, doc_filter: Dict, new_data: Dict) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_one(doc_filter, {"$inc": new_data})
