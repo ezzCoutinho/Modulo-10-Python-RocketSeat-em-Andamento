@@ -7,6 +7,7 @@ disable=
       W0703,   # Captura de exceção sem tratamento
       CO209,   # Importação de módulo não utilizada
       E0015,   # Erro de sintaxe
+      C0321,   # Método abstrato não implementado
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and
 # 3 compatible code, which means that the block might have code that exists

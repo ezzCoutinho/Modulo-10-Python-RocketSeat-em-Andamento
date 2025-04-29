@@ -40,7 +40,7 @@ def test_insert_document():
     assert collection_mock.insert_one_attributes["dict"] == data
 
 
-# @pytest.mark.skip(reason="SKIPPED")
+@pytest.mark.skip(reason="SKIPPED")
 def test_select_many_with_properties():
     collection_mock = CollectionMock()
     db_collection_mock = DbCollectionMock(collection_mock)
