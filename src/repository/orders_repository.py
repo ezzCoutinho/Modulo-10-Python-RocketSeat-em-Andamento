@@ -55,3 +55,11 @@ class OrdersRepository:
     def edit_registry_with_increment(self, doc_filter: Dict, new_data: Dict) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.update_one(doc_filter, {"$inc": new_data})
+
+    def delete_registry(self, doc_filter: Dict) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.delete_one(doc_filter)
+
+    def delete_many_registries(self, doc_filter: Dict) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.delete_many(doc_filter)
