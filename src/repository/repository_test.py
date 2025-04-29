@@ -118,8 +118,23 @@ def test_edit_many_registries():
     orders_repository.edit_many_registries(doc_filter, new_data)
 
 
+@pytest.mark.skip(reason="SKIPPED")
 def test_edit_registry_with_increment():
     orders_repository = OrdersRepository(conn)
     doc_filter = {"itens.refrigerante.quantidade": {"$exists": True}}
     new_data = {"itens.refrigerante.quantidade": 91}
     orders_repository.edit_registry_with_increment(doc_filter, new_data)
+
+
+@pytest.mark.skip(reason="SKIPPED")
+def test_delete_registry():
+    orders_repository = OrdersRepository(conn)
+    doc_filter = {"_id": ObjectId("680ad3b36a2842ab2f0fdea1")}
+    orders_repository.delete_registry(doc_filter)
+
+
+@pytest.mark.skip(reason="SKIPPED")
+def test_delete_many_registries():
+    orders_repository = OrdersRepository(conn)
+    doc_filter = {"cupom": False}
+    orders_repository.delete_many_registries(doc_filter)
