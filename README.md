@@ -29,3 +29,8 @@ delete_registry: Este método permite deletar um item específico da tabela, ap�
 delete_many_registries: Com este método, é possível deletar múltiplos itens da tabela de uma só vez.
 
 Além disso, realizamos testes unitários, incluindo o teste para o método insert_document.
+
+
+## 29/04
+
+Hoje finalizamos os testes unitários utilizando o mock find, onde testamos a função select_many_with_properties. Em seguida, criamos um arquivo de interface para o nosso repositório. Também desenvolvemos a aplicação principal usando uma nova biblioteca, o Flask, onde registramos nossas rotas. Até agora, registramos apenas uma nova rota para testar a conexão.
