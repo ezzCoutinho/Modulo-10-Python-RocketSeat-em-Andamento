@@ -21,7 +21,7 @@ class RegistryUpdater:
 
             self.__update_order(order_id, body)
 
-            return self.__format_response()
+            return self.__format_response(order_id)
         except Exception as e:
             return handle_errors(e)
 
@@ -29,6 +29,14 @@ class RegistryUpdater:
         registry_updater_validator(body)
 
     def __update_order(self, object_id: str, new_data: Dict) -> None:
+        from src.errors.types.http_unprocessable_entity import HttpUnprocessableEntity
+
+        if not object_id:
+            raise HttpUnprocessableEntity({"order_id": ["é obrigatório"]})
+
+        if not new_data or "data" not in new_data:
+            raise HttpUnprocessableEntity({"data": ["documento é obrigatório"]})
+
         update_fields = new_data["data"]
         self.__orders_repository.edit_registry(object_id, update_fields)
 
