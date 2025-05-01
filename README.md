@@ -34,3 +34,8 @@ Além disso, realizamos testes unitários, incluindo o teste para o método inse
 ## 29/04
 
 Hoje finalizamos os testes unitários utilizando o mock find, onde testamos a função select_many_with_properties. Em seguida, criamos um arquivo de interface para o nosso repositório. Também desenvolvemos a aplicação principal usando uma nova biblioteca, o Flask, onde registramos nossas rotas. Até agora, registramos apenas uma nova rota para testar a conexão.
+
+
+## 30/04
+
+Não vamos utilizar o padrão convencional de Model, View e Controller. Em vez disso, vamos adotar a arquitetura de User Case para o nosso projeto."
