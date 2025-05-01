@@ -7,6 +7,7 @@ from src.models.repository.interfaces.orders_repository_interface import (
     OrdersRepositoryInterface,
 )
 from src.validators.registry_orders_validator import registry_orders_validator
+from src.errors.error_controller import handle_errors
 
 
 class RegistryOrder:
@@ -23,10 +24,7 @@ class RegistryOrder:
 
             return self.__format_response()
         except Exception as e:
-            return HttpResponse(
-                body={"error": str(e)},
-                status_code=400,
-            )
+            return handle_errors(e)
 
     def __validate_body(self, body: Dict) -> None:
         registry_orders_validator(body)

@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 
 from src.main.http_types.http_request import HttpRequest
 from src.composer.registry_order_composer import registry_order_composer
+from src.errors.error_controller import handle_errors
 
 delivery_routes_bp = Blueprint("delivery_routes", __name__)
 
@@ -14,4 +15,4 @@ def registry_order():
         response = user_case.registry(http_request)
         return jsonify(response.body), response.status_code
     except Exception as e:
-        return jsonify({"error": str(e)}), 400
+        return jsonify(handle_errors(e)), 400
