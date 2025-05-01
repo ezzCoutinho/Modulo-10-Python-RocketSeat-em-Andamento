@@ -30,6 +30,8 @@ class RegistryFinder:
         return order
 
     def __format_response(self, order: Dict) -> Dict:
+        order["_id"] = str(order["_id"])
+
         return HttpResponse(
             body={"data": {"count": 1, "type": "Order", "attributes": order}},
             status_code=200,
