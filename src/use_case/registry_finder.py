@@ -15,13 +15,13 @@ class RegistryFinder:
 
     def find(self, http_request: HttpRequest) -> HttpResponse:
         try:
-            order_id = http_request.query.get("order_id")
+            order_id = http_request.params.get("order_id")
             order = self.__search_order(order_id)
             return self.__format_response(order)
         except Exception as e:
             return handle_errors(e)
 
-    def search_order(self, order_id: str) -> Dict:
+    def __search_order(self, order_id: str) -> Dict:
         order = self.__orders_repository.select_by_object_id(order_id)
 
         if not order:

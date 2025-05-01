@@ -15,7 +15,7 @@ class RegistryUpdater:
 
     def update(self, http_request: HttpRequest) -> HttpResponse:
         try:
-            order_id = http_request.query.get("order_id")
+            order_id = http_request.params.get("order_id")
             body = http_request.body
             self.__validate_body(body)
 
@@ -28,7 +28,7 @@ class RegistryUpdater:
     def __validate_body(self, body: Dict) -> None:
         registry_updater_validator(body)
 
-    def _update_order(self, object_id: str, new_data: Dict) -> None:
+    def __update_order(self, object_id: str, new_data: Dict) -> None:
         update_fields = new_data["data"]
         self.__orders_repository.edit_registry(object_id, update_fields)
 
