@@ -39,3 +39,17 @@ Hoje finalizamos os testes unitários utilizando o mock find, onde testamos a fu
 ## 30/04
 
 Não vamos utilizar o padrão convencional de Model, View e Controller. Em vez disso, vamos adotar a arquitetura de User Case para o nosso projeto."
+
+
+## 01/05
+
+Hoje finalizamos o módulo 10.
+Fizemos as seguintes implementações:
+Adicionamos a classe RegistryOrder, que agora retorna respostas HTTP, assim como fizemos com RegistryFinder e RegistryUpdater.
+Estabelecemos a conexão com o nosso banco de dados MongoDB antes da inicialização do servidor.
+Tornamos a classe DBConnectionHandler privada, exportando apenas o objeto que a instancia.
+Implementamos os composers para cada rota do projeto: registry_find_composer, registry_order_composer e registry_updater_composer.
+Criamos nossos próprios erros personalizados, NotFound e Unprocessable, juntamente com o controlador para gerenciá-los.
+Passamos a utilizar o pacote Cerberus, que nos permite validar o corpo da requisição e o tipo de dados que o usuário fornece. Essa validação foi aplicada nas rotas registry_order e registry_update.
+Realizamos testes unitários para ambas as rotas.
+No total, existem três tipos de rotas neste projeto: registry_order, que cria pedidos; registry_finder, que busca pedidos utilizando o ID; e registry_updater, que atualiza pedidos.
